@@ -27,6 +27,15 @@ class TimeZone
     #[ORM\Column]
     private string $gmtNumber;
 
+    public function __construct(string $name, string $description, string $relativeToGmt, string $gmtNumber)
+    {
+        $this->name = $name;
+        $this->description = $description;
+        $this->relativeToGmt = $relativeToGmt;
+        $this->gmtNumber = $gmtNumber;
+    }
+
+
     public function __toString()
     {
         return $this->getDescription();

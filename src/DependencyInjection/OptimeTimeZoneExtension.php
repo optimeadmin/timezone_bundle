@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Optime\TimeZone\Bundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\Resource\DirectoryResource;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -22,5 +23,7 @@ class OptimeTimeZoneExtension extends Extension
             new FileLocator(__DIR__ . '/../../config')
         );
         $loader->load('services.yaml');
+
+        $container->addResource(new DirectoryResource(dirname(__DIR__)));
     }
 }

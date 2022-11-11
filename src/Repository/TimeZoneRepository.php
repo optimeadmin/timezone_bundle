@@ -4,7 +4,7 @@ namespace Optime\TimeZone\Bundle\Repository;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Optime\Timezone\Bundle\Entity\TimeZone;
+use Optime\TimeZone\Bundle\Entity\TimeZone;
 
 class TimeZoneRepository extends ServiceEntityRepository
 {
