@@ -45,7 +45,7 @@ class DateTimeZoneAware implements Stringable, JsonSerializable
             return $this->default;
         }
 
-        if ($this->owner) {
+        if ($this->owner?->getTimeZone()) {
             $dateTime = $this->owner->getTimeZone()->convert($this->dateTime);
         } else {
             $dateTime = $this->dateTime;
