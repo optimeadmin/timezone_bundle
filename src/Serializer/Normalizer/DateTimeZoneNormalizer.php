@@ -11,6 +11,7 @@ use DateTimeInterface;
 use Optime\TimeZone\Bundle\Entity\TimeZone;
 use Optime\TimeZone\Bundle\Serializer\DateTimeZoneAware;
 use Optime\TimeZone\Bundle\TimeZoneAwareInterface;
+use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Serializer\Exception\LogicException;
 use Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface;
@@ -20,6 +21,7 @@ use Symfony\Component\Serializer\Normalizer\NormalizerAwareTrait;
 /**
  * @author Manuel Aguirre
  */
+#[AutoconfigureTag("serializer.normalizer", ['priority' => 10])]
 class DateTimeZoneNormalizer implements ContextAwareNormalizerInterface, NormalizerAwareInterface
 {
     use NormalizerAwareTrait;
