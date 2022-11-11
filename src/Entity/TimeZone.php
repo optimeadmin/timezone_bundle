@@ -5,7 +5,7 @@ namespace Optime\TimeZone\Bundle\Entity;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
-use Optime\Timezone\Bundle\Repository\TimeZoneRepository;
+use Optime\TimeZone\Bundle\Repository\TimeZoneRepository;
 
 #[ORM\Table(name: "optime_bundle_time_zone")]
 #[ORM\Entity(repositoryClass: TimeZoneRepository::class)]
