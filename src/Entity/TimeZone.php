@@ -2,6 +2,8 @@
 
 namespace Optime\TimeZone\Bundle\Entity;
 
+use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Optime\Timezone\Bundle\Repository\TimeZoneRepository;
 
@@ -69,5 +71,16 @@ class TimeZone
     public function toDateTimeZone(): \DateTimeZone
     {
         return new \DateTimeZone($this->getName());
+    }
+
+    public function convert(DateTimeInterface $dateTime): DateTimeInterface
+    {
+        $timeZone = $this->toDateTimeZone();
+
+        if ($dateTime->getTimezone() === $timeZone) {
+            return $dateTime;
+        }
+
+        return DateTimeImmutable::createFromInterface($dateTime)->setTimezone($timeZone);
     }
 }

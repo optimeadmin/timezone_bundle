@@ -45,10 +45,6 @@ class TimeZoneConverter
 
     private function toImmutable(DateTimeInterface $dateTime): DateTimeImmutable
     {
-        if ($dateTime instanceof DateTimeImmutable) {
-            return $dateTime;
-        }
-
-        return DateTimeImmutable::createFromMutable($dateTime);
+        return DateTimeImmutable::createFromInterface($dateTime);
     }
 }
