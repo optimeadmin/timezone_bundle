@@ -17,7 +17,13 @@ class TimeZoneConverter
 {
     public function convert(DateTimeInterface $dateTime, TimeZoneAwareInterface $timeZoneAware): DateTimeInterface
     {
-        return $this->doConvert($dateTime, $timeZoneAware->getTimeZone()->toDateTimeZone());
+        $timeZone = $timeZoneAware->getTimeZone()?->toDateTimeZone();
+
+        if (null === $timeZone) {
+            return $this->toImmutable($dateTime);
+        }
+
+        return $this->doConvert($dateTime, $timeZone);
     }
 
     public function toSystem(DateTimeInterface $dateTime): DateTimeInterface

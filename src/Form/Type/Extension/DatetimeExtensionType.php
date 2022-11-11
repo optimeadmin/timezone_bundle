@@ -27,24 +27,41 @@ class DatetimeExtensionType extends AbstractTypeExtension
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault('apply_timezone', null);
-        $resolver->setAllowedTypes('apply_timezone', [
+        $resolver->setDefault('timezone', null);
+        $resolver->setDefault('timezone_help', false);
+        $resolver->setAllowedTypes('timezone_help', 'bool');
+        $resolver->setAllowedTypes('timezone', [
             TimeZoneAwareInterface::class,
             TimeZone::class,
+            'null',
         ]);
 
-        $resolver->setDefault('view_timezone', function (Options $options) {
-            $timezone = $options['apply_timezone'];
 
-            if (!$timezone) {
+        $resolver->setDefault('view_timezone', function (Options $options) {
+            return $this->getTimeZone($options)?->getName();
+        });
+
+        $resolver->setDefault('help', function (Options $options) {
+            if (!$options['timezone_help']) {
                 return null;
             }
 
-            if ($timezone instanceof TimeZoneAwareInterface) {
-                $timezone = $timezone->getTimeZone();
-            }
-
-            return $timezone->getName();
+            return $this->getTimeZone($options)?->getDescription();
         });
+    }
+
+    private function getTimeZone(Options $options): ?TimeZone
+    {
+        $timezone = $options['timezone'];
+
+        if (!$timezone) {
+            return null;
+        }
+
+        if ($timezone instanceof TimeZoneAwareInterface) {
+            $timezone = $timezone->getTimeZone();
+        }
+
+        return $timezone;
     }
 }

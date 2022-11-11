@@ -14,5 +14,5 @@ use Optime\TimeZone\Bundle\Entity\TimeZone;
  */
 interface TimeZoneAwareInterface
 {
-    public function getTimeZone(): TimeZone;
+    public function getTimeZone(): ?TimeZone;
 }
