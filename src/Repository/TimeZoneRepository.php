@@ -1,6 +1,6 @@
 <?php
 
-namespace Optime\Timezone\Bundle\Repository;
+namespace Optime\TimeZone\Bundle\Repository;
 
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;

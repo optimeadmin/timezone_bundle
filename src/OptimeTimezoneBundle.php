@@ -3,13 +3,13 @@
  * @author Manuel Aguirre
  */
 
-namespace Optime\Timezone\Bundle;
+namespace Optime\TimeZone\Bundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * @author Manuel Aguirre
  */
-class OptimeTimezoneBundle extends Bundle
+class OptimeTimeZoneBundle extends Bundle
 {
 }

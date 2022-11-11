@@ -1,6 +1,6 @@
 <?php
 
-namespace Optime\Timezone\Bundle\Entity;
+namespace Optime\TimeZone\Bundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Optime\Timezone\Bundle\Repository\TimeZoneRepository;
