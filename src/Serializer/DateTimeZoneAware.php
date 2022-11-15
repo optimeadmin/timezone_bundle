@@ -64,10 +64,18 @@ class DateTimeZoneAware implements Stringable, JsonSerializable
         return $this->owner;
     }
 
-    public function convert(TimeZone $timeZone): self
+    public function convert(TimeZone|TimeZoneAwareInterface $timeZone): self
     {
         if (!$this->dateTime) {
             return clone $this;
+        }
+
+        if ($timeZone instanceof TimeZoneAwareInterface) {
+            $timeZone = $timeZone->getTimeZone();
+
+            if (!$timeZone) {
+                return clone $this;
+            }
         }
 
         return new self($timeZone->convert($this->dateTime), $this->format, $this->default);
