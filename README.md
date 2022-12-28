@@ -8,7 +8,7 @@ Instalación
 
 Ejecutar 
 
-    composer require "optimeconsulting/timezone-bundle"
+    composer require "optimeconsulting/timezone-bundle" "@dev"
 
 Luego de ello, registrar el bundle en el **config/bundles.php**:
 
