@@ -17,16 +17,16 @@ class TimeZone
     #[ORM\Column(type: 'integer')]
     private ?int $id;
 
-    #[ORM\Column]
+    #[ORM\Column(length: 110)]
     private string $name;
 
-    #[ORM\Column]
+    #[ORM\Column(length: 110)]
     private string $description;
 
-    #[ORM\Column]
+    #[ORM\Column(length: 10)]
     private string $relativeToGmt;
 
-    #[ORM\Column]
+    #[ORM\Column(length: 6)]
     private string $gmtNumber;
 
     public function __construct(string $name, string $description, string $relativeToGmt, string $gmtNumber)
